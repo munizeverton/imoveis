@@ -8,7 +8,6 @@
 
 namespace App\Services;
 
-
 use App\Models\Imovel;
 
 class ImovelService
@@ -39,5 +38,32 @@ class ImovelService
             throw new \Exception('Occoreu um erro ao buscar o imovel');
         }
 
+    }
+
+    public function create(array $data)
+    {
+        try {
+            return $this->imovel->create($data);
+        } catch (\Exception $e) {
+            throw new \Exception('Occoreu um erro ao salvar o imovel' . $e->getMessage());
+        }
+    }
+
+    public function update($id, array $data)
+    {
+        try {
+            return $this->imovel->find($id)->update($data);
+        } catch (\Exception $e) {
+            throw new \Exception('Occoreu um erro ao atualizar o imovel');
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            return $this->imovel->find($id)->delete();
+        } catch (\Exception $e) {
+            throw new \Exception('Occoreu um erro ao excluir o imovel');
+        }
     }
 }
