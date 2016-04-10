@@ -24,13 +24,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Imovel::class, function (Faker\Generator $faker) {
     return [
         'valor_aluguel' => $faker->numerify('####.##'),
-        'logradouro' => $faker->streetAddress,
-        'numero' => $faker->numerify('##'),
-        'complemento' => $faker->word,
-        'bairro' => $faker->word,
+        'endereco' => $faker->streetAddress,
         'cidade' => $faker->city,
         'estado' => $faker->word,
-        'cep' => $faker->numerify('#####-###'),
         'descricao' => $faker->text(),
         'url_imagem' => $faker->url,
     ];

@@ -16,13 +16,9 @@ class CreateImoveis extends Migration
         Schema::create('imoveis', function(Blueprint $table){
             $table->increments('id');
             $table->float('valor_aluguel');
-            $table->string('logradouro');
-            $table->string('numero');
-            $table->string('complemento')->nullable();
-            $table->string('bairro');
+            $table->string('endereco');
             $table->string('cidade');
             $table->string('estado');
-            $table->string('cep');
             $table->text('descricao');
             $table->string('url_imagem');
             $table->timestamps();

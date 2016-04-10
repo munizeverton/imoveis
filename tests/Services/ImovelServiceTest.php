@@ -30,10 +30,7 @@ class ImovelServiceTest extends \TestCase
     {
         return [
             'valor_aluguel' => 500,
-            'logradouro' => 'Av Rio Branco',
-            'numero' => '789',
-            'complemento' => null,
-            'bairro' => 'Centro',
+            'endereco' => 'Av Rio Branco, 789',
             'cidade' => 'Rio de Janeiro',
             'estado' => 'RJ',
             'cep' => '12456-456',

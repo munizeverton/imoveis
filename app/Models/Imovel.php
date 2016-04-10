@@ -10,13 +10,9 @@ class Imovel extends Model
 
     protected $fillable = [
         'valor_aluguel',
-        'logradouro',
-        'numero',
-        'complemento',
-        'bairro',
+        'endereco',
         'cidade',
         'estado',
-        'cep',
         'descricao',
         'url_imagem',
     ];
