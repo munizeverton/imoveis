@@ -13,6 +13,6 @@ class ImoveisTableSeeder extends Seeder
     {
         App\Models\Imovel::truncate();
 
-        factory(App\Models\Imovel::class, 50)->create();
+        factory(App\Models\Imovel::class, 20)->create();
     }
 }
