@@ -8,6 +8,7 @@
 
 namespace Services;
 
+use App\Models\Imovel;
 use App\Services\ImovelService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
@@ -15,14 +16,16 @@ use Illuminate\Support\Facades\Artisan;
 class ImovelServiceTest extends \TestCase
 {
     use DatabaseMigrations;
+
     private $imovelService;
+
     protected static $db_inited = false;
+
     protected static function initDB()
     {
-        echo "\n---initDB---\n"; // proof it only runs once per test TestCase class
-        Artisan::call('db:seed');
-        // ...more db init stuff, like seeding etc.
+
     }
+
     public function setUp()
     {
         parent::setUp();
@@ -41,5 +44,11 @@ class ImovelServiceTest extends \TestCase
     {
         $imoveis = $this->imovelService->getList();
         $this->assertCount(20, $imoveis);
+    }
+
+    public function testGet()
+    {
+        $imovel = $this->imovelService->get(3);
+        $this->assertInstanceOf(Imovel::class, $imovel);
     }
 }
