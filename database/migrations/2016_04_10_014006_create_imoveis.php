@@ -18,7 +18,7 @@ class CreateImoveis extends Migration
             $table->float('valor_aluguel');
             $table->string('logradouro');
             $table->string('numero');
-            $table->string('complemento');
+            $table->string('complemento')->nullable();
             $table->string('bairro');
             $table->string('cidade');
             $table->string('estado');
