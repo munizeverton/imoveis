@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
     // Rotas da autenticacao
     Route::get('/login', 'Auth\AuthController@getLogin');
     Route::post('/auth', 'Auth\AuthController@postLogin');
-    Route::get('/logout', 'LoginController@logout');
+    Route::get('/logout', 'Auth\AuthController@logout');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {

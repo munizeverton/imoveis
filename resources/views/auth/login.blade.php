@@ -30,57 +30,45 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<style>
-    body {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .navbar {
-        margin-bottom: 20px;
-    }
-</style>
-
-<body>
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/login.css" rel="stylesheet">
 
 <div class="container">
-
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Imoveis</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/admin">Admin</a></li>
-                </ul>
-                @if(Auth::check())
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/logout">Sair</a></li>
-                </ul>
-                @endif
-            </div>
-            <!--/.nav-collapse -->
+    @if (isset($msg))
+        <div class="alert alert-danger">
+            {{$msg}}
         </div>
-        <!--/.container-fluid -->
-    </nav>
-
-    <!-- Main component for a primary marketing message or call to action -->
+    @endif
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{!! $error !!}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <div class="row">
-        @yield('content')
+        <div class="col-md-offset-5 col-md-3">
+            <form class="m-t" role="form" action="/auth" method="post">
+                {{ csrf_field() }}
+                <div class="form-login">
+                    <h4>Login</h4>
+                    <input type="text" name="email" class="form-control input-sm chat-input" placeholder="Email"/>
+                    </br>
+                    <input type="text" name="password" class="form-control input-sm chat-input" placeholder="Senha"/>
+                    </br>
+                    <div class="wrapper">
+                    <span class="group-btn">
+                         <button type="submit" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></button>
+                    </span>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-
 </div>
-<!-- /container -->
 
 
 <!-- Bootstrap core JavaScript

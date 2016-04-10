@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Services\ImovelService;
+
+class AdminController extends Controller{
+
+    public function index()
+    {
+        $imovelService = new ImovelService();
+        $imoveis = $imovelService->getList();
+        return view('home.index', compact('imoveis'));
+    }
+
+    public function viewImovel($id)
+    {
+        $imovelService = new ImovelService();
+        $imovel = $imovelService->get($id);
+        return view('home.view', ['imovel' => $imovel]);
+    }
+
+}
