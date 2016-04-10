@@ -22,6 +22,22 @@ class ImovelService
 
     public function getList()
     {
-        return $this->imovel->get()->all();
+        try {
+            $imoveis = $this->imovel->get()->all();
+        } catch (\Exception $e){
+            throw new \Exception('Occoreu um erro ao listar os imoveis');
+        }
+
+        return $imoveis;
+    }
+
+    public function get($id)
+    {
+        try {
+            return $this->imovel->find($id);
+        } catch (\Exception $e){
+            throw new \Exception('Occoreu um erro ao buscar o imovel');
+        }
+
     }
 }
