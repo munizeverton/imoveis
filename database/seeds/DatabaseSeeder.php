@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call('ImoveisTableSeeder');
 
+        App\User::truncate();
+
         factory(App\User::class)->create(
             [
                 'name' => 'Admin',
