@@ -26,6 +26,22 @@ class ImovelServiceTest extends \TestCase
 
     }
 
+    protected function getGenericImovelArray()
+    {
+        return [
+            'valor_aluguel' => 500,
+            'logradouro' => 'Av Rio Branco',
+            'numero' => '789',
+            'complemento' => null,
+            'bairro' => 'Centro',
+            'cidade' => 'Rio de Janeiro',
+            'estado' => 'RJ',
+            'cep' => '12456-456',
+            'descricao' => 'Fake imovel',
+            'url_imagem' => 'http://generic.img.com/imovel.jpg',
+        ];
+    }
+
     public function setUp()
     {
         parent::setUp();
@@ -50,5 +66,29 @@ class ImovelServiceTest extends \TestCase
     {
         $imovel = $this->imovelService->get(3);
         $this->assertInstanceOf(Imovel::class, $imovel);
+    }
+
+    public function testCreate()
+    {
+        $arrayImovel = $this->getGenericImovelArray();
+        $this->imovelService->create($arrayImovel);
+
+        $this->assertCount(21, $this->imovelService->getList());
+    }
+
+    public function testUpdate()
+    {
+        $arrayImovel = $this->getGenericImovelArray();
+        $this->imovelService->update(15, $arrayImovel);
+
+        $imovel = $this->imovelService->get(15);
+        $this->assertEquals($arrayImovel['logradouro'], $imovel->logradouro);
+    }
+
+    public function testDelete()
+    {
+        $this->imovelService->delete(12);
+        $imoveis = $this->imovelService->getList();
+        $this->assertCount(19, $imoveis);
     }
 }
