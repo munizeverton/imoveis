@@ -9,7 +9,16 @@ class Imovel extends Model
     protected $table = 'imoveis';
 
     protected $fillable = [
-
+        'valor_aluguel',
+        'logradouro',
+        'numero',
+        'complemento',
+        'bairro',
+        'cidade',
+        'estado',
+        'cep',
+        'descricao',
+        'url_imagem',
     ];
 
 }
