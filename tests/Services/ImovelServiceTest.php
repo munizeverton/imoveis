@@ -79,7 +79,7 @@ class ImovelServiceTest extends \TestCase
         $this->imovelService->update(15, $arrayImovel);
 
         $imovel = $this->imovelService->get(15);
-        $this->assertEquals($arrayImovel['logradouro'], $imovel->logradouro);
+        $this->assertEquals($arrayImovel['endereco'], $imovel->endereco);
     }
 
     public function testDelete()
