@@ -25,6 +25,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/imovel/novo', 'AdminController@createForm');
-    Route::get('/admin/imovel/{id}', 'AdminController@getImovel');
+    Route::get('/admin/imovel/{id}', 'AdminController@updateForm');
+    Route::get('/admin/imovel/excluir/{id}', 'AdminController@delete');
 });
 

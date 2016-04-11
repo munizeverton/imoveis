@@ -6,18 +6,34 @@ use App\Services\ImovelService;
 
 class AdminController extends Controller{
 
-    public function index()
+    private $imovelService;
+
+    public function __construct(ImovelService $imovelService)
     {
-        $imovelService = new ImovelService();
-        $imoveis = $imovelService->getList();
-        return view('home.index', compact('imoveis'));
+        $this->imovelService = $imovelService;
     }
 
-    public function viewImovel($id)
+    public function index()
     {
-        $imovelService = new ImovelService();
-        $imovel = $imovelService->get($id);
-        return view('home.view', ['imovel' => $imovel]);
+        $imoveis = $this->imovelService->getList();
+        return view('admin.index', compact('imoveis'));
+    }
+
+    public function createForm()
+    {
+        return view('admin.create-imovel');
+    }
+
+    public function updateForm($id)
+    {
+        $imovel =  $this->imovelService->get($id);
+        return view('admin.update-imovel', ['imovel' => $imovel]);
+    }
+
+    public function delete($id)
+    {
+        $this->imovelService->delete($id);
+        return \Redirect::to('/admin');
     }
 
 }
