@@ -20,15 +20,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', 'Auth\AuthController@getLogin');
     Route::post('/auth', 'Auth\AuthController@postLogin');
     Route::get('/logout', 'Auth\AuthController@logout');
+});
 
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/imovel/novo', 'AdminController@createForm');
     Route::post('/admin/imovel/novo', 'AdminController@save');
     Route::get('/admin/imovel/{id}', 'AdminController@updateForm');
     Route::get('/admin/imovel/excluir/{id}', 'AdminController@delete');
-});
-
-Route::group(['middleware' => ['web', 'auth']], function () {
-
 });
 
