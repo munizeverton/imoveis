@@ -1,27 +1,65 @@
-# Laravel PHP Framework
+# Instalação e configuração
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Faça um clone desse projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+```sh
+git clone https://github.com/munizeverton/imoveis.git
+```
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Entre na pasta do projeto clonado e instale as dependencias com o composer
 
-## Official Documentation
+```sh
+cd imoveis
+composer install
+```
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Crie um arquivo chamado .env a partir do arquivo .env.example e altere as configurações abaixo,
+referentes ao banco da aplicação, banco de testes e do Amazon S3
 
-## Contributing
+```
+DB_CONNECTION=mysql
+DB_HOST=192.168.33.11
+DB_PORT=3306
+DB_DATABASE=imoveis
+DB_USERNAME=root
+DB_PASSWORD=root
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+TESTING_DB_HOST=192.168.33.11
+TESTING_DB_DATABASE=imoveis
+TESTING_DB_USERNAME=root
+TESTING_DB_PASSWORD=root
 
-## Security Vulnerabilities
+S3_KEY=
+S3_SECRET=
+S3_REGION=us-standard
+S3_BUCKET=
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Rode os comandos abaixo para criar as tabelas e popular com os dados fake
 
-## License
+```sh
+php artisan migrate
+php artisan db:seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+# Rodando a aplicação
+
+Você pode rodar a aplicação usando o servidor embutido do PHP
+com o comando abaixo
+
+```sh
+php -S 127.0.0.1:8080 -t public/
+```
+
+Agora basta acessar a aplicação em http://127.0.0.1:8080
+
+**Usuário** admin@imoveis.com
+**Senha** 123456
+
+# Rodando os testes
+
+Você pode rodar a suite de testes executando o comando abaixo
+
+```sh
+vendo/bin/phpunit
+```
