@@ -43,6 +43,7 @@ class ImovelService
     public function create(array $data)
     {
         try {
+            $data = $this->filter($data);
             return $this->imovel->create($data);
         } catch (\Exception $e) {
             throw new \Exception('Occoreu um erro ao salvar o imovel' . $e->getMessage());
@@ -52,6 +53,7 @@ class ImovelService
     public function update($id, array $data)
     {
         try {
+            $data = $this->filter($data);
             return $this->imovel->find($id)->update($data);
         } catch (\Exception $e) {
             throw new \Exception('Occoreu um erro ao atualizar o imovel');
@@ -65,5 +67,15 @@ class ImovelService
         } catch (\Exception $e) {
             throw new \Exception('Occoreu um erro ao excluir o imovel');
         }
+    }
+
+    private function filter(array $data)
+    {
+        if (isset($data['valor_aluguel'])){
+            $data['valor_aluguel'] = str_replace('.', '', $data['valor_aluguel']);
+            $data['valor_aluguel'] = str_replace(',', '.', $data['valor_aluguel']);
+        }
+
+        return $data;
     }
 }

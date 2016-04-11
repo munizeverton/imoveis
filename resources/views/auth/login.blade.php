@@ -35,20 +35,21 @@
 <link href="/css/login.css" rel="stylesheet">
 
 <div class="container">
-    @if (isset($msg))
-        <div class="alert alert-danger">
-            {{$msg}}
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
         </div>
     @endif
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{!! $error !!}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-offset-5 col-md-3">
             <form class="m-t" role="form" action="/auth" method="post">
@@ -57,7 +58,7 @@
                     <h4>Login</h4>
                     <input type="text" name="email" class="form-control input-sm chat-input" placeholder="Email"/>
                     </br>
-                    <input type="text" name="password" class="form-control input-sm chat-input" placeholder="Senha"/>
+                    <input type="password" name="password" class="form-control input-sm chat-input" placeholder="Senha"/>
                     </br>
                     <div class="wrapper">
                     <span class="group-btn">

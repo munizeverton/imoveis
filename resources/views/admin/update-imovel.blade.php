@@ -11,27 +11,31 @@
             </ul>
         </div>
     @endif
-    <form enctype="multipart/form-data" method="POST">
+    <form enctype="multipart/form-data" method="POST" action="/admin/imovel/novo">
         {{ csrf_field() }}
+        <input type="hidden" name="id" value="{{$imovel->id}}">
         <div class="form-group">
             <label for="valor_aluguel">Valor do aluguel *</label>
-            <input type="text" class="form-control mask-money" name="valor_aluguel" id="valor_aluguel">
+            <input type="text" class="form-control mask-money" name="valor_aluguel" id="valor_aluguel" value=" {{number_format($imovel->valor_aluguel, 2, ',', '.')}}">
         </div>
         <div class="form-group">
             <label for="endereco">Endereço *</label>
-            <input type="text" class="form-control" name="endereco" id="endereco">
+            <input type="text" class="form-control" name="endereco" id="endereco" value="{{$imovel->endereco}}">
         </div>
         <div class="form-group">
             <label for="cidade">Cidade *</label>
-            <input type="text" class="form-control" name="cidade" id="cidade">
+            <input type="text" class="form-control" name="cidade" id="cidade" value="{{$imovel->cidade}}">
         </div>
         <div class="form-group">
             <label for="estado">Estado *</label>
-            <input type="text" class="form-control" name="estado" id="estado">
+            <input type="text" class="form-control" name="estado" id="estado" value="{{$imovel->estado}}">
         </div>
         <div class="form-group">
             <label for="descricao">Descrição *</label>
-            <textarea name="descricao" id="descricao" class="form-control"></textarea>
+            <textarea name="descricao" id="descricao" class="form-control">{{$imovel->descricao}}</textarea>
+        </div>
+        <div class="form-group">
+            <img src="{{$imovel->url}}" class="img-rounded">
         </div>
         <div class="form-group">
             <label for="imagem">Imagem *</label>
