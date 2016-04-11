@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/munizeverton/imoveis.svg?branch=master)](https://travis-ci.org/munizeverton/imoveis)
+
 # Instalação e configuração
 
 Faça um clone desse projeto
