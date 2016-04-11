@@ -9,14 +9,18 @@
 namespace App\Services;
 
 use App\Models\Imovel;
+use Aws\S3\S3Client;
+use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use League\Flysystem\Filesystem;
 
 class ImovelService
 {
     private $imovel;
 
-    public function __construct()
+    public function __construct(ImagemService $imagemService)
     {
         $this->imovel = new Imovel();
+        $this->imagemService = $imagemService;
     }
 
     public function getList()
@@ -74,6 +78,10 @@ class ImovelService
         if (isset($data['valor_aluguel'])){
             $data['valor_aluguel'] = str_replace('.', '', $data['valor_aluguel']);
             $data['valor_aluguel'] = str_replace(',', '.', $data['valor_aluguel']);
+        }
+
+        if (isset($data['imagem'])){
+            $this->imagemService->uploadImage($data['imagem']);
         }
 
         return $data;

@@ -9,6 +9,7 @@
 namespace Services;
 
 use App\Models\Imovel;
+use App\Services\ImagemService;
 use App\Services\ImovelService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
@@ -50,7 +51,7 @@ class ImovelServiceTest extends \TestCase
     public function __construct()
     {
         parent::__construct();
-        $this->imovelService = new ImovelService();
+        $this->imovelService = new ImovelService(new ImagemService());
     }
 
     public function testGetList()

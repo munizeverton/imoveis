@@ -34,6 +34,11 @@ class AdminController extends Controller{
     public function save(ImovelRequest $request)
     {
         $data = $request->all();
+
+        if (isset($data['imagem'])){
+            $data['imagem'] = $request->file('imagem');
+        }
+
         if (isset($data['id'])){
             $this->imovelService->update($data['id'], $data);
             return redirect('/admin');
