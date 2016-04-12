@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/munizeverton/imoveis.svg?branch=master)](https://travis-ci.org/munizeverton/imoveis)
+[![Code Climate](https://codeclimate.com/github/munizeverton/imoveis/badges/gpa.svg)](https://codeclimate.com/github/munizeverton/imoveis)
 
 # Instalação e configuração
 
