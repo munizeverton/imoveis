@@ -16,7 +16,7 @@ cd imoveis
 composer install
 ```
 
-Crie um arquivo chamado .env a partir do arquivo .env.example e altere as configurações abaixo,  
+Crie um arquivo chamado .env a partir do arquivo .env.example e altere as configurações abaixo,
 referentes ao banco da aplicação, banco de testes e do Amazon S3
 
 ```
