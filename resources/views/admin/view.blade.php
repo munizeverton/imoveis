@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-md-4">
-       <img src="{{$imovel->url}}" class="img-rounded">
+       <img src="{{$imovel->url_imagem}}" class="img-rounded">
     </div>
     <div class="col-md-8">
         <ul>

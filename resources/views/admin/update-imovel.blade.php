@@ -35,7 +35,7 @@
             <textarea name="descricao" id="descricao" class="form-control">{{$imovel->descricao}}</textarea>
         </div>
         <div class="form-group">
-            <img src="{{$imovel->url}}" class="img-rounded">
+            <img src="{{$imovel->url_imagem}}" class="img-rounded">
         </div>
         <div class="form-group">
             <label for="imagem">Imagem *</label>

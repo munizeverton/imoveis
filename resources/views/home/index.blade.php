@@ -6,6 +6,9 @@
             <thead>
             <tr>
                 <th>
+                    &nbsp;
+                </th>
+                <th>
                     Endereço
                 </th>
                 <th>
@@ -19,6 +22,9 @@
             <tbody>
             @foreach($imoveis as $imovel)
                 <tr>
+                    <td>
+                        <img src="{{$imovel->url_imagem}}" class="img-rounded"  style="width: 50px;">
+                    </td>
                     <td>
                         {{$imovel->endereco}}, {{$imovel->cidade}} - {{$imovel->estado}}
                     </td>

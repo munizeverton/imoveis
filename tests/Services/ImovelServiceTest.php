@@ -51,7 +51,7 @@ class ImovelServiceTest extends \TestCase
     public function __construct()
     {
         parent::__construct();
-        $this->imovelService = new ImovelService(new ImagemService());
+        $this->imovelService = new ImovelService();
     }
 
     public function testGetList()

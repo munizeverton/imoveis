@@ -17,10 +17,12 @@ class ImovelService
 {
     private $imovel;
 
-    public function __construct(ImagemService $imagemService)
+    private $imagemService;
+
+    public function __construct()
     {
         $this->imovel = new Imovel();
-        $this->imagemService = $imagemService;
+        $this->imagemService = new ImagemS3Service();
     }
 
     public function getList()
@@ -41,16 +43,25 @@ class ImovelService
         } catch (\Exception $e){
             throw new \Exception('Occoreu um erro ao buscar o imovel');
         }
-
     }
 
     public function create(array $data)
     {
+        if (!empty($data['imagem'])) {
+            try {
+                $imageName = $this->generateImageName($data['imagem']);
+                $this->imagemService->uploadImage($data['imagem'], $imageName);
+                $data['url_imagem'] = $this->imagemService->getImageUrl($imageName);
+            } catch (\Exception $e) {
+                throw new \Exception('Occoreu um erro no upload da imagem');
+            }
+        }
+
         try {
             $data = $this->filter($data);
             return $this->imovel->create($data);
         } catch (\Exception $e) {
-            throw new \Exception('Occoreu um erro ao salvar o imovel' . $e->getMessage());
+            throw new \Exception('Occoreu um erro ao salvar o imovel');
         }
     }
 
@@ -81,9 +92,15 @@ class ImovelService
         }
 
         if (isset($data['imagem'])){
-            $this->imagemService->uploadImage($data['imagem']);
+
         }
 
         return $data;
+    }
+
+    private function generateImageName($image)
+    {
+        $fileName = 'img_' . time();
+        return $fileName . '.' . $image->getClientOriginalExtension();
     }
 }

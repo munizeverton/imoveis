@@ -9,7 +9,7 @@ class HomeController extends Controller{
 
     public function index()
     {
-        $imovelService = new ImovelService(new ImagemService());
+        $imovelService = new ImovelService();
         $imoveis = $imovelService->getList();
         return view('home.index', compact('imoveis'));
     }
