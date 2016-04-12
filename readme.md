@@ -20,7 +20,6 @@ Crie um arquivo chamado .env a partir do arquivo .env.example e altere as config
 referentes ao banco da aplicação, banco de testes e do Amazon S3
 
 ```
-DB_CONNECTION=mysql
 DB_HOST=192.168.33.11
 DB_PORT=3306
 DB_DATABASE=imoveis
