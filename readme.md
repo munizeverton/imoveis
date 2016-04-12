@@ -58,7 +58,7 @@ Agora basta acessar a aplicação em http://127.0.0.1:8080
 **Usuário** admin@imoveis.com
 **Senha** 123456
 
-Se houver algum problema com as sessions do php,
+Se houver algum problema com as sessions do php,  
 provavelmente você precisa dar permissão na pasta storage
 
 # Rodando os testes
