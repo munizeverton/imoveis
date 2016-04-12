@@ -67,6 +67,16 @@ class ImovelService
 
     public function update($id, array $data)
     {
+        if (!empty($data['imagem'])) {
+            try {
+                $imageName = $this->generateImageName($data['imagem']);
+                $this->imagemService->uploadImage($data['imagem'], $imageName);
+                $data['url_imagem'] = $this->imagemService->getImageUrl($imageName);
+            } catch (\Exception $e) {
+                throw new \Exception('Occoreu um erro no upload da imagem');
+            }
+        }
+
         try {
             $data = $this->filter($data);
             return $this->imovel->find($id)->update($data);

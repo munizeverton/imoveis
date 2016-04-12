@@ -23,10 +23,14 @@
             @foreach($imoveis as $imovel)
                 <tr>
                     <td>
-                        <img src="{{$imovel->url_imagem}}" class="img-rounded"  style="width: 50px;">
+                        <a href="/imovel/{{$imovel->id}}">
+                            <img src="{{$imovel->url_imagem}}" class="img-rounded"  style="width: 50px;">
+                        </a>
                     </td>
                     <td>
-                        {{$imovel->endereco}}, {{$imovel->cidade}} - {{$imovel->estado}}
+                        <a href="/imovel/{{$imovel->id}}">
+                            {{$imovel->endereco}}, {{$imovel->cidade}} - {{$imovel->estado}}
+                        </a>
                     </td>
                     <td>
                         {{number_format($imovel->valor_aluguel, 2, ',', '.')}}
