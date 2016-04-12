@@ -16,7 +16,7 @@ cd imoveis
 composer install
 ```
 
-Crie um arquivo chamado .env a partir do arquivo .env.example e altere as configurações abaixo,
+Crie um arquivo chamado .env a partir do arquivo .env.example e altere as configurações abaixo,  
 referentes ao banco da aplicação, banco de testes e do Amazon S3
 
 ```
@@ -31,7 +31,7 @@ TESTING_DB_HOST=192.168.33.11
 TESTING_DB_DATABASE=imoveis
 TESTING_DB_USERNAME=root
 TESTING_DB_PASSWORD=root
-  
+
 S3_KEY=
 S3_SECRET=
 S3_REGION=us-standard
@@ -58,6 +58,9 @@ Agora basta acessar a aplicação em http://127.0.0.1:8080
 
 **Usuário** admin@imoveis.com
 **Senha** 123456
+
+Se houver algum problema com as sessions do php,
+provavelmente você precisa dar permissão na pasta storage
 
 # Rodando os testes
 
